@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE web-app
+PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+"http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+	<display-name>exemple formation</display-name>
+	<description>
+		exemple formation servlet et jsp
+	</description>
+	<!-- <filter> <filter-name>portier</filter-name> <filter-class>mesCommandes.MonFiltre</filter-class> 
+		</filter> -->
+	<!-- <filter-mapping> <filter-name>portier</filter-name> <servlet-name>acheter</servlet-name> 
+		</filter-mapping> <filter-mapping> <filter-name>portier</filter-name> <servlet-name>commander</servlet-name> 
+		</filter-mapping> -->
+	<servlet>
+		<servlet-name>inscrire</servlet-name>
+		<servlet-class>pkg.InscriptionClient</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>inscrire</servlet-name>
+		<url-pattern>/servlet/sinscrire</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>acheter</servlet-name>
+		<servlet-class>pkg.AfficherLesDisques</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>acheter</servlet-name>
+		<url-pattern>/servlet/achat</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>commander</servlet-name>
+		<servlet-class>pkg.CommanderUnDisque</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>commander</servlet-name>
+		<url-pattern>/servlet/commande</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>enregistrer</servlet-name>
+		<servlet-class>pkg.EnregistrerCommande</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>enregistrer</servlet-name>
+		<url-pattern>/servlet/enregistre</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>vider</servlet-name>
+		<servlet-class>pkg.VidePanier</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>vider</servlet-name>
+		<url-pattern>/servlet/vider</url-pattern>
+	</servlet-mapping>
+</web-app>
