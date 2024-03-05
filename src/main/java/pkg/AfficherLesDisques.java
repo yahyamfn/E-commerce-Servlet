@@ -16,12 +16,11 @@ public class AfficherLesDisques extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		out.println("<html>");
-		out.println("<body>");
 		out.println("<head>");
 		out.println("<title> Commande de disques </title>");
 		out.println("</head>");
-		out.println("<body bgcolor=\"white\">");
-		out.println("<h3>" + "Bonjour " + nom + " vous pouvez commander un disque :" + "</h3>");
+		out.println("<body>");
+		out.println("<h3 style='text-align: center;'>" + "Bonjour " + nom + " vous pouvez commander un disque :" + "</h3>");
 		uneVente.vente(out);
 		out.println("</body>");
 		out.println("</html>");

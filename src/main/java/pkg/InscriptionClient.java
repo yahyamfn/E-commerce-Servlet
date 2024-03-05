@@ -40,7 +40,7 @@ public class InscriptionClient extends HttpServlet {
 			out.println("<head>");
 			out.println("<title> inscription d'un client </title>");
 			out.println("</head>");
-			out.println("<body bgcolor='white' >");
+			out.println("<body>");
 			out.println("\n"+nomRecu + " | " + motPasseRecu + " | " + nomCookie + " | " + motPasseCookie);
 			//out.println("‎‎‎‎‎‎‎‎‎ ‎‎‎tjriba : "+tjriba);
 			out.println("<h3>" + "Bonjour, vous devez vous inscrire " + "</h3>");

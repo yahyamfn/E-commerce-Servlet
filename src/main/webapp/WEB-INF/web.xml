@@ -1,7 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<!DOCTYPE web-app
-PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
-"http://java.sun.com/dtd/web-app_2_3.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
 <web-app>
 	<display-name>exemple formation</display-name>
 	<description>
@@ -46,7 +43,7 @@ PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>vider</servlet-name>
-		<servlet-class>pkg.VidePanier</servlet-class>
+		<servlet-class>pkg.ViderPanier</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>vider</servlet-name>

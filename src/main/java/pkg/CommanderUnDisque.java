@@ -15,17 +15,18 @@ public class CommanderUnDisque extends HttpServlet {
 		nom = Identification.verifier(cookies);	
 		String ordre = request.getParameter("ordre");
 		String prix = request.getParameter("prix");
-		Disque disquee = new Disque(ordre, prix);
+		Disque disque = new Disque(ordre, prix);
 		//Cookie panierCookie = new Cookie("panier", null);
 		//response.addCookie(panierCookie);
 		
 		HttpSession session = request.getSession();
-		List<String> panier = new ArrayList<>();
+		List<Disque> panier = (List<Disque>) session.getAttribute("panier");
 		// Ajouter des éléments au panier
-		panier.add(disquee.toString());
-
-		// Ajouter le panier à la session
-		session.setAttribute("panier", panier);
+		if (panier == null) {
+            panier = new ArrayList<>();
+            session.setAttribute("panier", panier);
+        }
+        panier.add(disque);
 
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
@@ -34,20 +35,30 @@ public class CommanderUnDisque extends HttpServlet {
 		out.println("<head>");
 		out.println("<title> votre commande </title>");
 		out.println("</head>");
-		out.println("<body bgcolor=\"white\">");
-		out.println("<h3>" + "Bonjour " + nom + " voici votre commande" + "</h3>");
+		out.println("<body>");
+		out.println("<style>#va{background-color:rgb(236 131 41)} body{background-color:rgb(250 245 228);padding: 40%;padding-top:0;} table{margin-left: -50px;margin-left:20px}</style>");
+		out.println("<h1>" + "Bonjour " + nom + " voici votre commande : </h1>");
+		out.println("<h5><b> (Votre panier) </b></h5>");
 		
 		// Affichage de tous les disques présents dans le panier (éléments de la session)
-		List<String> panierr = (List<String>) session.getAttribute("panier");
-		if (panierr != null) {
-			for (String disque : panierr) {
-				out.println("<p>" + disque + "</p>");
-			}
-		}
-		
+		//List<String> panierRecue = (List<String>) session.getAttribute("panier");
+		 out.println("<table border='1'>");
+		 out.println("<tr id='va'><th><b>Ordre</b></th><th><b>Prix</b></th></tr>");
+			for (Disque disqueRecu : panier) {
+	            nbreProduit++;
+	            out.println("<tr><td>" + disqueRecu.getOrdre() + "</td><td>" + disqueRecu.getPrix() + " Euros</td></tr>");
+	        }
+			out.println("</table>");
+	        out.println("<p> Votre panier contient : "+ nbreProduit +" disque(s) </p>");
+			out.println("<A HREF=achat> Vous pouvez commandez un autre disque </A><br> ");
+			out.println("<A HREF=enregistre> Vous pouvez enregistrer votre commande </A><br> ");
+			out.println("</body>");
+			out.println("</html>");
+			
 		// Si le paramètre ordre == ajouter, affichage du disque à ajouter au panier
 		//String ordre = request.getParameter("ordre");
-		if ("ajouter".equals(ordre)) {
+		//had lblock makhdamch
+		/*if ("ajouter".equals(ordre)) {
 			String disqueAAjouter = request.getParameter("disque");
 			if (disqueAAjouter != null) {
 				out.println("<p>Ajouté au panier: " + disqueAAjouter + "</p>");
@@ -57,13 +68,11 @@ public class CommanderUnDisque extends HttpServlet {
 				}
 				panierr.add(disqueAAjouter);
 			}
-		}
+		}*/
+		//7tal lhna o kay7bss hadchi li lt7t khdam
 		
-		out.println("<A HREF=achat> Vous pouvez commandez un autre disque </A><br> ");
-		out.println("<A HREF=enregistre> Vous pouvez enregistrer votre commande </A><br> ");
-		out.println("</body>");
-		out.println("</html>");
-	}
+		}
+	
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		doGet(request, response);
